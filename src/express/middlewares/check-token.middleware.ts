@@ -20,7 +20,6 @@ export async function checkTokenMiddleware(
         res.sendStatus(401);
       }
     } else {
-      log("44");
       res.sendStatus(404);
     }
   } else {
