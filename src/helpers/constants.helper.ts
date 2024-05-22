@@ -4,4 +4,6 @@ export const pagesWithTokenAcces = [
   "/api/giveRole",
   "/api/unbanUser",
   "/api/banUser",
+  "/api/createProduct",
+  "/api/findProduct",
 ];

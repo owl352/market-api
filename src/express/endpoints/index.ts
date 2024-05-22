@@ -7,6 +7,8 @@ import { validateLoginEndpoint } from "./validate-login.endpoint";
 import { giveRoleEndpoint } from "./give-role.endpoint";
 import { BanEndpoint } from "./ban.endpoint";
 import { UnBanEndpoint } from "./unban.endpoint";
+import { createProductEndpoint } from "./create-product.endpoint";
+import { findProductEndpoint } from "./find-product.endpoint";
 
 export function initEndPoints(app: Express) {
   registerEndpoint(app);
@@ -17,4 +19,6 @@ export function initEndPoints(app: Express) {
   giveRoleEndpoint(app);
   BanEndpoint(app);
   UnBanEndpoint(app);
+  createProductEndpoint(app);
+  findProductEndpoint(app);
 }

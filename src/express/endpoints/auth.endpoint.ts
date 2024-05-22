@@ -2,10 +2,11 @@ import type { Express, Request, Response } from "express";
 import { error as err, log } from "logger";
 import { userModel } from "../../models";
 import { auth } from "../../helpers/auth.helper";
+import { validateParam } from "../../helpers/validate-param.helper";
 export function authEndpoint(app: Express) {
   app.post("/api/auth", async (req: Request, res: Response) => {
     try {
-      if (req.body.pass && req.body.login) {
+      if (validateParam(req.body.pass) && validateParam(req.body.login)) {
         const user = await userModel.findOne({ login: req.body.login }).exec();
         if (user) {
           const token = await auth({ pass: req.body.pass, user: user });
