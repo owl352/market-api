@@ -9,6 +9,8 @@ import { BanEndpoint } from "./ban.endpoint";
 import { UnBanEndpoint } from "./unban.endpoint";
 import { createProductEndpoint } from "./create-product.endpoint";
 import { findProductEndpoint } from "./find-product.endpoint";
+import { updateProductEndpoint } from "./update-product.endpoint";
+import { deleteProductEndpoint } from "./delete-product.endpoint";
 
 export function initEndPoints(app: Express) {
   registerEndpoint(app);
@@ -21,4 +23,6 @@ export function initEndPoints(app: Express) {
   UnBanEndpoint(app);
   createProductEndpoint(app);
   findProductEndpoint(app);
+  updateProductEndpoint(app);
+  deleteProductEndpoint(app);
 }

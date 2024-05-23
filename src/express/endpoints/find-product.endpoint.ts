@@ -2,15 +2,13 @@ import type { Express, Request, Response } from "express";
 import { error as err, log } from "logger";
 import { findProduct } from "../../helpers/find-product.helper";
 import mongoose from "mongoose";
+import { userModel } from "../../models";
+import { Roles } from "../../enums";
 export function findProductEndpoint(app: Express) {
   app.post("/api/findProduct", async (req: Request, res: Response) => {
     try {
       const body = req.body;
-      log(
-        body.inStock !== undefined
-          ? body.inStock === "true"
-          : undefined + "\n" + body.inStock
-      );
+      const user = await userModel.findOne({ login: body.login });
       res.send(
         await findProduct({
           _id: body._id
@@ -21,9 +19,11 @@ export function findProductEndpoint(app: Express) {
           inStock:
             body.inStock !== undefined ? body.inStock === "true" : undefined,
           isAvailable:
-            body.isAvailable !== undefined
-              ? body.isAvailable === "true"
-              : undefined,
+            user?.role == Roles.admin
+              ? body.isAvailable !== undefined
+                ? body.isAvailable === "true"
+                : undefined
+              : true,
           description: body.description,
           additions: body.additions,
         })
