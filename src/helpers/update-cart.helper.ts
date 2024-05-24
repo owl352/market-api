@@ -13,22 +13,22 @@ export async function updateCart(
       haveThis = true;
       if (count == "0") {
         newCart = newCart.filter(
-          (_) => _ != el
+          (_: any) => _ != el
         ) as mongoose.Types.DocumentArray<{
           id: mongoose.Types.ObjectId;
           count: number;
         }>;
       } else {
-        newCart[newCart.findIndex((_) => _ == el)].count = parseInt(count);
+        newCart[newCart.findIndex((_: any) => _ == el)].count = parseInt(count);
       }
       break;
     }
   }
   if (!haveThis) {
-    if (count != 0) {
+    if (count != "0") {
       newCart.push({
         id: mongoose.Types.ObjectId.createFromHexString(id),
-        count: count,
+        count: parseInt(count),
       });
     } else {
       return false;
