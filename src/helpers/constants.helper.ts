@@ -8,4 +8,5 @@ export const pagesWithTokenAcces = [
   "/api/findProduct",
   "/api/updateProduct",
   "/api/deleteProduct",
+  "/api/updateCart",
 ];

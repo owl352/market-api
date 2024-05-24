@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 export const userSchema = new Schema({
+  _id: { type: Schema.ObjectId, required: true },
   login: { type: String, required: true },
   passHash: { type: String, required: true },
   username: { type: String, required: true },

@@ -11,6 +11,8 @@ import { createProductEndpoint } from "./create-product.endpoint";
 import { findProductEndpoint } from "./find-product.endpoint";
 import { updateProductEndpoint } from "./update-product.endpoint";
 import { deleteProductEndpoint } from "./delete-product.endpoint";
+import { validateKeyEndpoint } from "./validate-key.endpoint";
+import { updateCartEndpoint } from "./update-cart.endpoint";
 
 export function initEndPoints(app: Express) {
   registerEndpoint(app);
@@ -25,4 +27,6 @@ export function initEndPoints(app: Express) {
   findProductEndpoint(app);
   updateProductEndpoint(app);
   deleteProductEndpoint(app);
+  validateKeyEndpoint(app);
+  updateCartEndpoint(app);
 }
